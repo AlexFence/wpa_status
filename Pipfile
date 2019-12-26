@@ -1,0 +1,13 @@
+[dev-packages]
+pytest = "*"
+coverage = "*"
+flake8 = "*"
+flake8-quotes = "*"
+
+[packages]
+bson = "*"
+
+[scripts]
+test = "python -m pytest -v"
+coverage = "bash ./scripts/coverage.sh"
+lint = "python -m flake8"
