@@ -1,0 +1,28 @@
+image: "python:3-buster"
+
+stages:
+    - lint
+    - test
+    - coverage
+
+before_script:
+    - python --version
+    - pip install pipenv
+    - pipenv install --dev
+
+lint:
+    stage: lint
+    script:
+        - pipenv run lint
+
+test:
+    stage: test
+    script:
+        - pipenv run test
+
+coverage:
+    stage: coverage
+    coverage: '/TOTAL.*\s+(\d+%)$/'
+    script:
+        - pipenv run coverage
+
