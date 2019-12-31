@@ -9,7 +9,7 @@ setup(
     description="client library for wpa_statusd",
     author="Alex Fence",
     packages=["wpa_status"],
-    install_requires=["bson"],
+    install_requires=["pymongo"],
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
