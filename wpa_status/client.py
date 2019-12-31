@@ -1,6 +1,6 @@
 import socket
 import bson
-from wpa_status.protocol import Request, Response
+from wpa_status.protocol import Request, Response, Error
 
 
 class Client():
@@ -20,8 +20,11 @@ class Client():
             self._socket.sendall(request_bytes)
 
             response_bytes = self._socket.recv(4096 * 2)
-            response_bson = bson.decode(response_bytes)
-            return Response(response_bson)
+            response_dict = bson.decode(response_bytes)
+            if response_dict["type"] == "Response":
+                return Response(response_dict)
+            else:
+                return Error(response_dict)
         except BrokenPipeError:
             self._create_socket()
             return self.request(method, params)

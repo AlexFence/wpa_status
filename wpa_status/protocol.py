@@ -67,3 +67,18 @@ class Request(Message):
         base = super().serialize()
         base["params"] = self.params
         return base
+
+
+class Error(Message):
+    def __init__(self, dict):
+        super().__init__(dict)
+        self._code = dict["code"]
+
+    @property
+    def code(self):
+        return self._code
+
+    def serialize(self):
+        base = super().serialize()
+        base["code"] = self.code
+        return base
