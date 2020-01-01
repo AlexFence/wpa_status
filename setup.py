@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name="wpa_status",
-    version="0.0.1",
+    version="0.1.0",
     description="client library for wpa_statusd",
     author="Alex Fence",
     packages=["wpa_status"],
